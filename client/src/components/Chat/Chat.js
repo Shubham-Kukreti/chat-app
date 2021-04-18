@@ -6,7 +6,7 @@ import InfoBar from '../InfoBar/InfoBar'
 import Input from '../Input/Input'
 import Messages from '../Messages/Messages'
 import TextContainer from '../TextContainer/TextContainer'
-
+import { useHistory } from 'react-router-dom'
 
 let socket;
 
@@ -36,6 +36,7 @@ const Chat = ({location}) => {
         socket.emit('join',{ name, room}, (error) => {
             if(error) {
                 alert(error);
+                history.pushState("/");
             }
         });
 
