@@ -23,8 +23,10 @@ const Chat = ({location}) => {
     const [users, setUsers] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const ENDPOINT = 'localhost:5000';
+    const ENDPOINT = 'https://react-chat-web-application.herokuapp.com/';
     
+    const history = useHistory();
+
     useEffect(()=>{
         const { name, room } = queryString.parse(location.search)
         
@@ -36,7 +38,7 @@ const Chat = ({location}) => {
         socket.emit('join',{ name, room}, (error) => {
             if(error) {
                 alert(error);
-                history.pushState("/");
+                history.push("/");
             }
         });
 
